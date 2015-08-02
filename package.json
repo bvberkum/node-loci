@@ -42,6 +42,7 @@
     "nodelib": "git://github.com/dotmpe/nodelib#dev"
   },
   "devDependencies": {
+    "chai": "^3.2.0",
     "coffeelint": "latest",
     "grunt": "latest",
     "grunt-cli": "latest",
@@ -52,6 +53,7 @@
     "grunt-mocha-test": "^0.12.7",
     "grunt-yamllint": "^0.2.0",
     "load-grunt-config": "latest",
-    "load-grunt-tasks": "latest"
+    "load-grunt-tasks": "latest",
+    "request": "^2.60.0"
   }
 }
