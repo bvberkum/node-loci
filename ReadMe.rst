@@ -20,3 +20,6 @@ NodeJS Express.IO Seed
      :alt: GIT
 
 
+- Boilerplate coffee-script project with Express.IO server/client and Mocha tests.
+- Gruntfile (JS) for lintint and testing.
+
