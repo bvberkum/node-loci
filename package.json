@@ -1,7 +1,7 @@
 {
   "name": "node-expressio-seed-mpe",
   "description": "Work in progress seed project. ",
-  "version": "0.0.1",
+  "version": "0.0.2-dev",
   "homepage": "https://github.com/dotmpe/node-expressio-seed",
   "author": {
     "name": "B. van Berkum",

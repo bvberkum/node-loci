@@ -1,6 +1,6 @@
 NodeJS Express.IO Seed
 =====================
-:version: 0.0.1
+:version: 0.0.2-dev
 :dependency status:
 
   .. image:: https://gemnasium.com/dotmpe/node-expressio-seed.png
