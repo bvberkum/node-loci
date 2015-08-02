@@ -32,11 +32,20 @@ describe "node-expressio-seed-mpe", ->
     done()
 
 
-  it "runs a Socket.IO enabled Express app,
-      serving a HTML client at the root", ( done ) ->
+  it "runs a Socket.IO enabled Express app", ( done ) ->
 
     expect( server.app ).to.be.an.object
 
+    sio_url = "http://localhost:#{server.port}/socket.io/socket.io.js"
+    request.get sio_url, ( err, res, body ) ->
+
+      expect( res.statusMessage ).to.equal 'OK'
+      expect( res.statusCode ).to.equal 200
+
+      done()
+
+
+  it "serves a HTML client at the root", ( done ) ->
     request.get "http://localhost:#{server.port}", ( err, res, body ) ->
 
       expect( res.statusMessage ).to.equal 'OK'
@@ -44,6 +53,7 @@ describe "node-expressio-seed-mpe", ->
 
       client = fs.readFileSync 'public/client.html'
       expect( res.body.toString() ).to.equal client.toString()
+
       done()
 
 
