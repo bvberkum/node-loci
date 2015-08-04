@@ -29,3 +29,6 @@ master
   f_backbone_tree
     - Setting up for list/outline viewer? Want to use Backbone model collection setup but not sure of GUI framework yet.
 
+  f_jade
+    - Keeping jade additions to seed separate.
+
