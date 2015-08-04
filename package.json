@@ -1,8 +1,8 @@
 {
-  "name": "node-expressio-seed-mpe",
+  "name": "node-loci-mpe",
   "description": "Work in progress seed project. ",
-  "version": "0.0.2-dev",
-  "homepage": "https://github.com/dotmpe/node-expressio-seed",
+  "version": "0.0.0-master",
+  "homepage": "https://github.com/dotmpe/node-loci",
   "author": {
     "name": "B. van Berkum",
     "email": "mpe@dotmpe.com"
@@ -17,13 +17,13 @@
   "licenses": [
     {
       "type": "GPLv3",
-      "url": "https://github.com/dotmpe/node-expressio-seed/blob/master/LICENSE-GPLv3"
+      "url": "https://github.com/dotmpe/node-loci/blob/master/LICENSE-GPLv3"
     }
   ],
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dotmpe/node-expressio-seed.git"
+    "url": "https://github.com/dotmpe/node-loci.git"
   },
   "engines": {
     "node": "0.10.x",
@@ -38,9 +38,6 @@
     "coffee-script": "latest",
     "express.io": "latest"
   },
-  "disabledAltDependencies": {
-    "nodelib": "git://github.com/dotmpe/nodelib#dev"
-  },
   "devDependencies": {
     "chai": "^3.2.0",
     "coffeelint": "latest",
@@ -51,6 +48,7 @@
     "grunt-contrib-coffee": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-mocha-test": "^0.12.7",
+    "mocha": "latest",
     "grunt-yamllint": "^0.2.0",
     "load-grunt-config": "latest",
     "load-grunt-tasks": "latest",
