@@ -1,0 +1,59 @@
+mixin mainmenu( items )
+
+  each route, name in items
+
+    if route._url
+      li(class=isActive(route._url) ? 'active' : '')
+        a(href=route._url)= route._label
+
+    else if route._divider
+      li.divider
+
+    else if route._menu
+      li.dropdown
+        a.dropdown-toggle(href="#", data-toggle="dropdown")= route._menu
+          b.caret
+        ul.dropdown-menu
+          +mainmenu( route )
+
+
+nav.navbar.navbar-default(role="navigation")
+
+  .container-fluid
+
+    // Brand and toggle get grouped for better mobile display
+    .navbar-header
+      button.navbar-toggle(type="button",data-toggle="collapse",data-target="#main-navbar-collapse")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href="#") Brand
+
+    // Collect the nav links, forms, and other content for toggling
+    #main-navbar-collapse.collapse.navbar-collapse
+
+      ul.nav.navbar-nav
+
+        +mainmenu( menu )
+
+      ul.nav.navbar-nav.navbar-right
+
+        li.dropdown
+          a.dropdown-toggle(href="#",data-toggle="dropdown") Modules
+            b.caret
+          ul.dropdown-menu
+            - each module in modules
+              li
+                a(href="/module/"+module.name)= module.name
+
+            li.divider
+            li
+              a(href="/modules") View Modules
+            li
+              a(href="/admin/template") View Template
+            li
+              a(href="/admin") Admin
+
+
+

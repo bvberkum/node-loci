@@ -1,0 +1,35 @@
+doctype html
+
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml')
+
+  include ../include/head
+
+  body
+
+    block prologue
+
+    #wrap
+
+      include ../include/header
+
+      block header
+
+      .container
+        .main-content
+
+          .main-head
+
+            block main
+
+          block content
+
+    block wrap_epilogue
+
+    #footer
+      .container-fluid
+
+        block footer
+
+    block epilogue
+
+

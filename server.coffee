@@ -1,6 +1,8 @@
 port = 7001
 
-app = require('express.io')()
+express = require 'express.io'
+
+app = express()
 app.http().io()
 
 
@@ -14,6 +16,12 @@ app.get '/', (req, res) ->
   console.log 'Serving client'
   res.sendfile __dirname + '/public/client.html'
 
+# first setup for Jade client
+require( './src/loci/client' )(app)
+
+app.use express.static './public'
+
+# Export server module
 module.exports =
   port: port
   app: app
