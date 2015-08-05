@@ -12,9 +12,12 @@ app.io.route 'ready', (req) ->
     message: 'io event from an io route on the server'
 
 # Send the client html.
-app.get '/', (req, res) ->
+app.get '/client.html', (req, res) ->
   console.log 'Serving client'
   res.sendfile __dirname + '/public/client.html'
+
+app.get '/', ( req, res ) ->
+  res.redirect '/client'
 
 # first setup for Jade client
 require( './src/loci/client' )(app)
@@ -27,6 +30,7 @@ module.exports =
   app: app
   proc: null
   init: ( done ) ->
+    port = module.exports.port
     proc = app.listen port, ->
       console.log "server at localhost:#{port}"
       !done || done()

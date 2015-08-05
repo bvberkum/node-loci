@@ -16,6 +16,10 @@
   ],
   "dependencies": {
     "bootstrap": "latest",
-    "jquery": "latest"
+    "backbone": "latest",
+    "backbone.marionette": "latest",
+    "jquery": "latest",
+    "coffee-script": "~1.9.3",
+    "lodash": "~3.10.1"
   }
 }

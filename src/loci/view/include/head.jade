@@ -13,14 +13,14 @@ head
 
   block link
 
-  - each id in head.init.js
-    script(type='text/javascript', id=id, src=head.lib.js[id])
+  - each path, id in head.lib.js
+    script(type='text/javascript', id=id, src=path)
 
-  - each id in head.init.cs
-    script(type='text/coffeescript', id=id, src=head.lib.cs[id])
+  - each path, id in head.lib.cs
+    script(type='text/coffeescript', id=id, src=path)
 
-  - each id in head.init.css
-    link(rel='stylesheet', id=id href=head.lib.css[id])
+  - each path, id in head.lib.css
+    link(rel='stylesheet', id=id href=path)
 
   - each r_main in head.init.rjs
     script(data-main=r_main, src=head.lib.rjs[r_main])

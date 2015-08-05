@@ -28,7 +28,7 @@ nav.navbar.navbar-default(role="navigation")
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href="#") Brand
+      a.navbar-brand(href="#")= page.title
 
     // Collect the nav links, forms, and other content for toggling
     #main-navbar-collapse.collapse.navbar-collapse
@@ -40,20 +40,26 @@ nav.navbar.navbar-default(role="navigation")
       ul.nav.navbar-nav.navbar-right
 
         li.dropdown
-          a.dropdown-toggle(href="#",data-toggle="dropdown") Modules
+
+          a.dropdown-toggle(href="#",data-toggle="dropdown") Menu
             b.caret
+
           ul.dropdown-menu
-            - each module in modules
-              li
-                a(href="/module/"+module.name)= module.name
+            - if ( modules && modules.length )
+              - each module in modules
+                li
+                  a(href="/module/"+module.name)= module.name
+
+              li.divider
+
+            li
+              a(href="/client.html") Static Socket.IO client
+            li
+              a(href="/client") Backbone+MarionetteJS Client
 
             li.divider
-            li
-              a(href="/modules") View Modules
-            li
-              a(href="/admin/template") View Template
-            li
-              a(href="/admin") Admin
 
+            li
+              a(href="/example-data") Example data
 
 

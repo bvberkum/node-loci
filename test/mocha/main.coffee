@@ -25,6 +25,7 @@ describe "node-expressio-seed-mpe", ->
 
   before ( done ) ->
     server = require pathResolve 'server'
+    server.port = 7002
     server.init done
 
   after ( done ) ->
@@ -36,17 +37,17 @@ describe "node-expressio-seed-mpe", ->
 
     expect( server.app ).to.be.an.object
 
-    sio_url = "http://localhost:#{server.port}/socket.io/socket.io.js"
-    request.get sio_url, ( err, res, body ) ->
+    req = url: "http://localhost:#{server.port}/socket.io/socket.io.js"
+    request.get req, ( err, res, body ) ->
 
       expect( res.statusMessage ).to.equal 'OK'
       expect( res.statusCode ).to.equal 200
 
       done()
 
-
-  it "serves a HTML client at the root", ( done ) ->
-    request.get "http://localhost:#{server.port}", ( err, res, body ) ->
+  it "serves a static HTML client", ( done ) ->
+    req = uri: "http://localhost:#{server.port}/client.html"
+    request.get req, ( err, res, body ) ->
 
       expect( res.statusMessage ).to.equal 'OK'
       expect( res.statusCode ).to.equal 200
@@ -54,6 +55,28 @@ describe "node-expressio-seed-mpe", ->
       client = fs.readFileSync 'public/client.html'
       expect( res.body.toString() ).to.equal client.toString()
 
+      done()
+
+  it "redirects to HTML client", ( done ) ->
+    req =
+      url: "http://localhost:#{server.port}/"
+      followRedirect: false
+    request req, ( err, res, body ) ->
+
+      expect( res.statusMessage ).to.equal 'Moved Temporarily'
+      expect( res.statusCode ).to.equal 302
+
+      done()
+
+  it "serves a HTML client", ( done ) ->
+    req = uri: "http://localhost:#{server.port}/"
+    request.get req, ( err, res, body ) ->
+
+      expect( res.statusMessage ).to.equal 'OK'
+      expect( res.statusCode ).to.equal 200
+
+      expect( res.body.toString() ).to.contain '<!DOCTYPE html>'
+      expect( res.body.toString() ).to.contain '<title>Loci</title>'
       done()
 
 

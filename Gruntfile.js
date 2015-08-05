@@ -21,6 +21,8 @@ module.exports = function(grunt) {
       },
       src: [
         '*.coffee',
+        'src/**/*.coffee',
+        'public/client.coffee',
         'test/**/*.coffee'
       ]
     },

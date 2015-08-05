@@ -20,6 +20,9 @@ Node Loci
      :alt: GIT
 
 
+Just some example data and a MarionetteJS tree view. Need to look into backend.
+
+
 Branch docs
 -----------
 master
@@ -27,5 +30,6 @@ master
     tests, Grunt JS buildfile for linting and testing).
 
   f_backbone_tree
-    - Setting up for list/outline viewer? Want to use Backbone model collection setup but not sure of GUI framework yet.
+    - Setting up for list/outline viewer? 
+      Added simple Backbone treeview, need to look into backend.
 

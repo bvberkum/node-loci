@@ -1,3 +1,18 @@
 extends ../layout/base
 
+block main
+
+  script(id="node-template", type="text/template")
+    | <%= nodeName %>
+    | <ul></ul>
+
+  div
+    h3 Last Socket.IO talk
+
+    #talk
+
+  div
+    h3 Tree
+
+    #tree
 
