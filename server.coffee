@@ -6,23 +6,16 @@ app = express()
 app.http().io()
 
 
-# Setup the ready route, and emit talk event.
-app.io.route 'ready', (req) ->
-  req.io.emit 'talk',
-    message: 'io event from an io route on the server'
-
-# Send the client html.
-app.get '/client.html', (req, res) ->
-  console.log 'Serving client'
-  res.sendfile __dirname + '/public/client.html'
-
 app.get '/', ( req, res ) ->
-  res.redirect '/client'
-
-# first setup for Jade client
-require( './src/loci/client' )(app)
+  res.redirect '/main'
 
 app.use express.static './public'
+
+# Setup client to serve list file
+
+# TODO: build a frontend to relay paths to list files
+require( './src/loci/client' )(app)
+
 
 # Export server module
 module.exports =

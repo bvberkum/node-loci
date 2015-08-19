@@ -31,7 +31,7 @@
   },
   "main": "server.coffee",
   "scripts": {
-    "start": "NODE_ENV=development nodemon server.coffee -w coffee -w src -w public -e jade,js,coffee,meta,yaml",
+    "start": "NODE_ENV=development nodemon server.coffee -w coffee -w src -w public -e jade,js,coffee,json,yaml",
     "test": "grunt --force lint test"
   },
   "dependencies": {

@@ -33,3 +33,8 @@ master
     - Setting up for list/outline viewer? 
       Added simple Backbone treeview, need to look into backend.
 
+
+Development
+-----------
+- `First version <docs/version-0.rst>`_
+

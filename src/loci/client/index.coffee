@@ -1,70 +1,28 @@
 view = require '../view'
 
 
-treeData = [
-  {
-    nodeName: "top level 1",
-    nodes: [
-      {
-        nodeName: "2nd level, item 1",
-        nodes: [
-          { nodeName: "3rd level, item 1" },
-          { nodeName: "3rd level, item 2" },
-          { nodeName: "3rd level, item 3" }
-        ]
-      },
-      {
-        nodeName: "2nd level, item 2",
-        nodes: [
-          { nodeName: "3rd level, item 4" },
-          {
-              nodeName: "3rd level, item 5",
-              nodes: [
-                  { nodeName: "4th level, item 1" },
-                  { nodeName: "4th level, item 2" },
-                  { nodeName: "4th level, item 3" }
-              ]
-          },
-          { nodeName: "3rd level, item 6" }
-        ]
-      }
-    ]
-  },
-  {
-    nodeName: "top level 2",
-    nodes: [
-      {
-        nodeName: "2nd level, item 3",
-        nodes: [
-          { nodeName: "3rd level, item 7" },
-          { nodeName: "3rd level, item 8" },
-          { nodeName: "3rd level, item 9" }
-        ]
-      },
-      {
-        nodeName: "2nd level, item 4",
-        nodes: [
-          { nodeName: "3rd level, item 10" },
-          { nodeName: "3rd level, item 11" },
-          { nodeName: "3rd level, item 12" }
-        ]
-      }
-    ]
-  }
-
-]
-
-
 
 module.exports = ( app ) ->
 
-  app.get '/client', view.init_jade_handler 'client/main', head:
-    lib:
-      cs:
-        client: '/client.coffee'
+  require( './example-data' ) app
 
-  app.get '/example-data', ( req, res ) ->
-    res.type 'application/json'
-    res.write JSON.stringify treeData
-    res.end()
+  listname = 'urls.list'
+  require( './backend' ) app, listname
+
+  app.get '/main', view.init_jade_handler 'client/main',
+    listname: listname
+    head:
+      lib:
+        cs:
+          client: '/client.coffee'
+
+  app.get '/slideshow', view.init_jade_handler 'client/slideshow',
+    listname: listname
+    head:
+      lib:
+        cs:
+          client: '/client.coffee'
+
+  app.get '/view/part/url-tile', view.init_jade_handler 'client/part/url-tile', {}
+
 

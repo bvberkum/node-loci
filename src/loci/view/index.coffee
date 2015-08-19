@@ -26,6 +26,7 @@ view = module.exports =
             js:
               'socket.io': '/socket.io/socket.io.js'
               jquery: '/components/jquery/dist/jquery.js'
+              handlebars: '/components/handlebars/handlebars.js'
               lodash: '/components/lodash/lodash.js'
               bootstrap: '/components/bootstrap/dist/js/bootstrap.js'
               coffeescript: '/components/coffee-script/extras/coffee-script.js'

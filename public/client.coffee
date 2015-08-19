@@ -3,6 +3,10 @@ console.log "Loading Loci"
 
 
 
+# require client/view/tree-node
+
+
+
 # Backbone defines
 
 # the view is two part: the root is a collectionview, but it never sees all
@@ -10,10 +14,10 @@ console.log "Loading Loci"
 # composite view. Each node on initialize creates a new collection for the
 # sub-level.
 
-TreeView = Backbone.Marionette.CompositeView.extend {
+TreeNodeView = Backbone.Marionette.CompositeView.extend {
 
-  template: "#node-template"
-  tagName: "ul"
+  template: "url-tile"
+  tagName: "div"
 
   initialize: ->
     @collection = @model.nodes
@@ -28,8 +32,8 @@ TreeView = Backbone.Marionette.CompositeView.extend {
 
 }
 
-TreeRootView = Backbone.Marionette.CollectionView.extend {
-  childView: TreeView
+TreeView = Backbone.Marionette.CollectionView.extend {
+  childView: TreeNodeView
 }
 
 # The tree node model initializes subnode collections
@@ -44,22 +48,42 @@ TreeNode = Backbone.Model.extend {
 
 # The collection uses the tree node model
 TreeNodeCollection = Backbone.Collection.extend {
-  url: '/example-data'
+  url: '/loci/data'
   model: TreeNode
 }
+
+
+# Patch to load external templates
+Backbone.Marionette.TemplateCache.prototype.loadTemplate = ( templateId ) ->
+
+  template = ''
+  url = '/view/part/' + templateId
+
+  # Load the template by fetching the URL content synchronously.
+  Backbone.$.ajax
+      async: false
+      url: url
+      success: ( templateHtml ) ->
+          template = templateHtml
+
+  return template
+
+
+# Instruct Marionette to use Handlebars.
+Marionette.TemplateCache.prototype.compileTemplate = ( template ) ->
+  Handlebars.compile( template )
 
 
 # init routines
 
 initTree = ->
   treeCollection = new TreeNodeCollection
-  treeView = new TreeRootView collection: treeCollection
+  treeView = new TreeView collection: treeCollection
 
   treeView.render()
-  $('#tree').html(treeView.el)
+  $('#collection').html(treeView.el)
 
   treeCollection.fetch()
-
 
 initIO = ->
   sio = io.connect()

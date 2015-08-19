@@ -13,15 +13,6 @@ pathResolve = ( path ) ->
 describe "node-expressio-seed-mpe", ->
 
   server = null
-  sessionCookie = null
-
-  reqInit = ( path, method='GET' ) ->
-    host: "localhost"
-    port: server.port || 7000
-    path: path
-    method: 'GET'
-    headers:
-      Cookie: sessionCookie
 
   before ( done ) ->
     server = require pathResolve 'server'
@@ -40,20 +31,9 @@ describe "node-expressio-seed-mpe", ->
     req = url: "http://localhost:#{server.port}/socket.io/socket.io.js"
     request.get req, ( err, res, body ) ->
 
+      expect( !err )
       expect( res.statusMessage ).to.equal 'OK'
       expect( res.statusCode ).to.equal 200
-
-      done()
-
-  it "serves a static HTML client", ( done ) ->
-    req = uri: "http://localhost:#{server.port}/client.html"
-    request.get req, ( err, res, body ) ->
-
-      expect( res.statusMessage ).to.equal 'OK'
-      expect( res.statusCode ).to.equal 200
-
-      client = fs.readFileSync 'public/client.html'
-      expect( res.body.toString() ).to.equal client.toString()
 
       done()
 
@@ -63,6 +43,7 @@ describe "node-expressio-seed-mpe", ->
       followRedirect: false
     request req, ( err, res, body ) ->
 
+      expect( !err )
       expect( res.statusMessage ).to.equal 'Moved Temporarily'
       expect( res.statusCode ).to.equal 302
 
@@ -72,6 +53,7 @@ describe "node-expressio-seed-mpe", ->
     req = uri: "http://localhost:#{server.port}/"
     request.get req, ( err, res, body ) ->
 
+      expect( !err )
       expect( res.statusMessage ).to.equal 'OK'
       expect( res.statusCode ).to.equal 200
 
