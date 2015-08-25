@@ -1,0 +1,4 @@
+module.exports =
+
+  baseType: 'tree'
+
