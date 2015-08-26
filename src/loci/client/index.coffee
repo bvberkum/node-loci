@@ -14,8 +14,7 @@ module.exports = ( app ) ->
 	clientTpl = jade.compileFile require.resolve '../view/client/slideshow.jade'
 	app.get '/client/slideshow', ( req, res ) ->
 		params = view.default_params()
-		params.urlList = loci.load_urls( './urls.list' )
-		console.log params.urlList
+		params.urlList = loci.load_urls( req.query.list )
 		res.write clientTpl params
 		res.end()
 
