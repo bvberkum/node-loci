@@ -1,18 +1,24 @@
 _ = require 'lodash'
 
 
-head_lib = {
-  cs: {}
-  js:
-    bootstrap: '/components/bootstrap/dist/js/bootstrap.js'
-    jquery: '/components/jquery/dist/jquery.js'
-  css:
-    bootstrap: '/components/bootstrap/dist/css/bootstrap.css'
-    'bootstrap-theme': '/components/bootstrap/dist/css/bootstrap-theme.css'
-}
-
 module.exports =
-  default_params: ( seed={} ) ->
+  default_params: ( config, seed={} ) ->
+
+    comp_base = config.root + '/components'
+
+    head_lib = {
+      cs: {}
+      js:
+        bootstrap: comp_base+'/bootstrap/dist/js/bootstrap.js'
+        jquery: comp_base+'/jquery/dist/jquery.js'
+      css:
+        bootstrap: comp_base+'/bootstrap/dist/css/bootstrap.css'
+        'bootstrap-theme': comp_base+'/bootstrap/dist/css/bootstrap-theme.css'
+    }
+
+    seed.comp_base = comp_base
+    seed.config = config
+
     _.defaults seed,
         pkg: require './../../../package.json'
         page:

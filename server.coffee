@@ -8,27 +8,31 @@ app = express()
 app.http().io()
 
 
+config = require './config/server'
+root = config.root || ''
+
+
 # Setup the ready route, and emit talk event.
 app.io.route 'ready', (req) ->
   req.io.emit 'talk',
     message: 'io event from an io route on the server'
 
 # Send the client html.
-app.get '/', (req, res) ->
+app.get root+'/', (req, res) ->
   console.log 'Serving client'
   res.sendfile __dirname + '/public/client.html'
 
 
-app.get '/client/slideshow.js', (req, res) ->
+app.get root+'/client/slideshow.js', (req, res) ->
   data = fs.readFileSync 'public/slideshow.coffee'
   compiled = cs.compile data.toString()
   res.write compiled
   res.end()
 
 # first setup for Jade client
-require( './src/loci/client' )(app)
+require( './src/loci/client' )(app, config)
 
-app.use express.static './public'
+app.use root, express.static './public'
 
 # Export server module
 module.exports =
