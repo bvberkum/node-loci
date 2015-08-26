@@ -20,10 +20,10 @@ app.get '/', (req, res) ->
 
 
 app.get '/client/slideshow.js', (req, res) ->
-	data = fs.readFileSync 'public/slideshow.coffee'
-	compiled = cs.compile data.toString()
-	res.write compiled
-	res.end()
+  data = fs.readFileSync 'public/slideshow.coffee'
+  compiled = cs.compile data.toString()
+  res.write compiled
+  res.end()
 
 # first setup for Jade client
 require( './src/loci/client' )(app)

@@ -21,6 +21,7 @@ module.exports = function(grunt) {
       },
       src: [
         '*.coffee',
+        'src/**/*.coffee',
         'test/**/*.coffee'
       ]
     },
@@ -30,7 +31,8 @@ module.exports = function(grunt) {
         src: [
           'config/*.yaml',
           'src/**/*.meta',
-          'src/**/*.metadata'
+          'src/**/*.yaml',
+          'src/**/*.yml'
         ]
       }
     },
