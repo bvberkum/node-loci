@@ -31,4 +31,4 @@ master
 
   f_jade
     - Keeping jade additions to seed separate.
-
+    - Started on slideshow code.
