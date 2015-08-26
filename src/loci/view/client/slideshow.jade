@@ -1,0 +1,24 @@
+extends ../layout/base
+
+block  head
+
+    link(rel='stylesheet', href='/client.css')
+    script(src="/client/slideshow.js")
+
+
+block wrap_epilogue
+    iframe(src="http://dotmpe.com",id="slideshow").slideshow
+
+block footer
+    div Footer
+
+block menu
+
+  ul.urlList
+
+    for url in urlList
+
+      li
+        a(href='#', data-url=url)= url
+
+

@@ -1,5 +1,6 @@
 _ = require 'lodash'
 
+
 module.exports =
 	default_params: ( seed={} ) ->
 		_.defaults seed,

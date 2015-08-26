@@ -1,6 +1,8 @@
 port = 7001
 
 express = require 'express.io'
+fs = require 'fs'
+cs = require 'coffee-script'
 
 app = express()
 app.http().io()
@@ -15,6 +17,13 @@ app.io.route 'ready', (req) ->
 app.get '/', (req, res) ->
   console.log 'Serving client'
   res.sendfile __dirname + '/public/client.html'
+
+
+app.get '/client/slideshow.js', (req, res) ->
+	data = fs.readFileSync 'public/slideshow.coffee'
+	compiled = cs.compile data.toString()
+	res.write compiled
+	res.end()
 
 # first setup for Jade client
 require( './src/loci/client' )(app)

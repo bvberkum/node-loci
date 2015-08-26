@@ -1,6 +1,7 @@
 jade = require 'jade'
 
 view = require '../view'
+loci = require '../'
 
 module.exports = ( app ) ->
 
@@ -9,3 +10,12 @@ module.exports = ( app ) ->
 		params = view.default_params()
 		res.write clientTpl params
 		res.end()
+
+	clientTpl = jade.compileFile require.resolve '../view/client/slideshow.jade'
+	app.get '/client/slideshow', ( req, res ) ->
+		params = view.default_params()
+		params.urlList = loci.load_urls( './urls.list' )
+		console.log params.urlList
+		res.write clientTpl params
+		res.end()
+

@@ -1,0 +1,27 @@
+/* todo build custom classes */
+
+
+/* reset height */
+.navbar {
+  min-height: auto;
+  margin-bottom: 0;
+}
+.navbar-brand {
+  padding: 2px 5px;
+  height: auto;
+}
+.navbar-nav > li > a {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* reset some styule */
+.navbar-default {
+  border-radius: none;
+}
+
+/* client */
+
+iframe.slideshow {
+  width: 100%;
+}

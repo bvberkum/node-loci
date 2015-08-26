@@ -43,17 +43,15 @@ nav.navbar.navbar-default(role="navigation")
           a.dropdown-toggle(href="#",data-toggle="dropdown") Modules
             b.caret
           ul.dropdown-menu
-            - each module in modules
-              li
-                a(href="/module/"+module.name)= module.name
 
-            li.divider
-            li
-              a(href="/modules") View Modules
-            li
-              a(href="/admin/template") View Template
-            li
-              a(href="/admin") Admin
+            if modules
+              - each module in modules
+                li
+                  a(href="/module/"+module.name)= module.name
+
+              li.divider
+
+            block menu
 
 
 
