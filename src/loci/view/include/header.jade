@@ -40,7 +40,7 @@ nav.navbar.navbar-default(role="navigation")
       ul.nav.navbar-nav.navbar-right
 
         li.dropdown
-          a.dropdown-toggle(href="#",data-toggle="dropdown") Modules
+          a.dropdown-toggle(href="#",data-toggle="dropdown") Sites
             b.caret
           ul.dropdown-menu
 
@@ -52,6 +52,13 @@ nav.navbar.navbar-default(role="navigation")
               li.divider
 
             block menu
+
+      form.navbar-form.navbar-right(action="#").navbar-form-sm
+        .input-group.input-group-sm
+          span.input-group-addon#sizing-addon @
+          input.form-control(aria-describedby="sizing-addong", type="text", placeholder="...").list
+          span.input-group-btn
+            button.btn.btn-default(type="button") Load
 
 
 

@@ -15,6 +15,21 @@
   padding-bottom: 0;
 }
 
+/* small is too big in navbar */
+.navbar .input-group-sm > .form-control, 
+.navbar .input-group-sm > .input-group-addon, 
+.navbar .input-group-sm > .input-group-btn > .btn {
+  height: 22px;
+  margin: 0;
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+.navbar-form-sm {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
 /* reset some styule */
 .navbar-default {
   border-radius: none;
