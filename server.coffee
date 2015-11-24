@@ -9,7 +9,7 @@ app.http().io()
 
 
 config = require './config/server'
-root = config.root || ''
+root = config.root = config.root || ''
 
 
 # Setup the ready route, and emit talk event.

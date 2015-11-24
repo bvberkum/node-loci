@@ -12,6 +12,7 @@ module.exports = ( app, config ) ->
     res.end()
 
   clientTpl = jade.compileFile require.resolve '../view/client/slideshow.jade'
+  console.log "Serving on ", config.root+'/client/slideshow'
   app.get config.root+'/client/slideshow', ( req, res ) ->
     params = view.default_params(config)
     urlFile = req.query.list || loci.default_settings().load_urls
