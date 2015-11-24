@@ -18,6 +18,7 @@ module.exports = ( app, config ) ->
   app.get config.root+'/client/slideshow', ( req, res ) ->
     params = view.default_params(config)
     urlFile = req.query.list || loci.default_settings().load_urls
+    params.page.title = urlFile+" - Loci"
     console.log "Serving /client/slideshow for", urlFile
     params.urlList = loci.load_urls( urlFile )
     res.write clientTpl params
