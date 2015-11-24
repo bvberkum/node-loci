@@ -28,4 +28,14 @@ master
 
   f_backbone_tree
     - Setting up for list/outline viewer? Want to use Backbone model collection setup but not sure of GUI framework yet.
+    - Incomplete, not working properly.
+
+  f_jade
+    - Keeping jade additions to seed separate.
+    - Started on slideshow code.
+    - Not doing anything useful.
+
+  test
+    - Has an older "working" client, but not up to any spec. Just template work,
+      some scripts.
 
