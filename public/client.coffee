@@ -25,10 +25,10 @@ Backbone.Marionette.TemplateCache.prototype.loadTemplate = ( templateId ) ->
 
   # Load the template by fetching the URL content synchronously.
   Backbone.$.ajax
-      async: false
-      url: url
-      success: ( templateHtml ) ->
-          template = templateHtml
+    async: false
+    url: url
+    success: ( templateHtml ) ->
+      template = templateHtml
 
   return template
 

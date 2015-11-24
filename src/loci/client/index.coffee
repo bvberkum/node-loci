@@ -16,13 +16,15 @@ module.exports = ( app ) ->
         cs:
           client: '/client.coffee'
 
-  app.get '/slideshow', view.init_jade_handler 'client/slideshow',
-    listname: listname
-    head:
-      lib:
-        cs:
-          client: '/client.coffee'
+  app.get '/slideshow',
+    view.init_jade_handler 'client/slideshow',
+      listname: listname
+      head:
+        lib:
+          cs:
+            client: '/client.coffee'
 
-  app.get '/view/part/url-tile', view.init_jade_handler 'client/part/url-tile', {}
+  app.get '/view/part/url-tile',
+    view.init_jade_handler 'client/part/url-tile', {}
 
 
