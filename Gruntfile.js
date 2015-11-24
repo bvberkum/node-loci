@@ -10,6 +10,9 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
+      client: {
+        src: 'src/loci/client/**/*.js'
+      },
       gruntfile: {
         src: 'Gruntfile.js'
       }
@@ -18,6 +21,9 @@ module.exports = function(grunt) {
     coffeelint: {
       options: {
         configFile: '.coffeelint.json'
+      },
+      client: {
+        src: 'src/loci/client/**/*.coffee'
       },
       src: [
         '*.coffee',
@@ -80,10 +86,10 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build-client', [
-    'make:build-client',
+    //'make:build-client',
   ]);
   grunt.registerTask('client', [
-    'jshint:client',
+    //'jshint:client',
     'coffeelint:client',
     'build-client'
   ]);
