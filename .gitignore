@@ -2,4 +2,3 @@ node_modules
 public/components/
 config/server.coffee
 *.urls
-config/server.coffee

@@ -15,13 +15,6 @@ describe "node-expressio-seed-mpe", ->
   server = null
   sessionCookie = null
 
-  reqInit = ( path, method='GET' ) ->
-    host: "localhost"
-    port: server.port || 7000
-    path: path
-    method: 'GET'
-    headers:
-      Cookie: sessionCookie
 
   before ( done ) ->
     server = require pathResolve 'server'
@@ -34,13 +27,15 @@ describe "node-expressio-seed-mpe", ->
 
   it "runs a Socket.IO enabled Express app", ( done ) ->
 
+    expect( server.port ).to.be.a.number
     expect( server.app ).to.be.an.object
 
     sio_url = "http://localhost:#{server.port}/socket.io/socket.io.js"
     request.get sio_url, ( err, res, body ) ->
 
-      expect( res.statusMessage ).to.equal 'OK'
       expect( res.statusCode ).to.equal 200
+      expect( res.headers['content-type'] ).to.equal 'application/javascript'
+#      expect( res.statusMessage ).to.equal 'OK'
 
       done()
 
@@ -48,8 +43,10 @@ describe "node-expressio-seed-mpe", ->
   it "serves a HTML client at the root", ( done ) ->
     request.get "http://localhost:#{server.port}", ( err, res, body ) ->
 
-      expect( res.statusMessage ).to.equal 'OK'
       expect( res.statusCode ).to.equal 200
+      expect( res.headers['content-length'] ).to.equal '215'
+      expect( res.headers['content-type'] ).to.equal 'text/html; charset=UTF-8'
+#      expect( res.statusMessage ).to.equal 'OK'
 
       client = fs.readFileSync 'public/client.html'
       expect( res.body.toString() ).to.equal client.toString()
