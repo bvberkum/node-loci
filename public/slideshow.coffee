@@ -24,6 +24,8 @@ $(document).ready ->
 	$('ul.urlList a').click ( ev ) ->
 		e = $(ev.currentTarget)
 		href = e.attr 'data-url'
+		$('a#url').val href
+		$('a#url').text href
 		$('iframe.slideshow').attr 'src', href
 		#if (!_.contains( sites, href ))
 		#   XXX: add iframes that request unique session
