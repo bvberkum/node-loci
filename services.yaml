@@ -1,0 +1,7 @@
+namespace: loci.v0
+services:
+  view:
+    class: build/js/lib/loci/services/View.js
+    arguments: []
+    calls: []
+    properties: []

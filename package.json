@@ -2,10 +2,10 @@
   "name": "node-loci-mpe",
   "description": "Work in progress seed project. ",
   "version": "0.0.0-master",
-  "homepage": "https://github.com/dotmpe/node-loci",
+  "homepage": "https://github.com/bvberkum/node-loci",
   "author": {
     "name": "B. van Berkum",
-    "email": "mpe@dotmpe.com"
+    "email": "dev@dotmpe.com"
   },
   "keywords": [
     "express",
@@ -17,41 +17,52 @@
   "licenses": [
     {
       "type": "GPLv3",
-      "url": "https://github.com/dotmpe/node-loci/blob/master/LICENSE-GPLv3"
+      "url": "https://github.com/bvberkum/node-loci/blob/master/LICENSE-GPLv3"
     }
   ],
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dotmpe/node-loci.git"
+    "url": "https://github.com/bvberkum/node-loci.git"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
-  "main": "server.coffee",
+  "main": "bin/loci-cli.coffee",
   "scripts": {
     "start": "NODE_ENV=development nodemon server.coffee -w coffee -w src -w public -e jade,js,coffee,meta,yaml",
     "test": "grunt --force lint test"
   },
   "dependencies": {
-    "coffee-script": "latest",
-    "express.io": "latest"
+    "chalk": "^2.3.0",
+    "lodash": "~4.17.4",
+    "coffee-script": "~1.12.7",
+    "consolidate": "^0.14.5",
+    "express": "^4.16.2",
+    "neodoc": "^1.4.0",
+    "nodelib-mpe": "0.0.6",
+    "pug": "^2.0.0-rc.4",
+    "qs": "^6.5.1",
+    "service-container": "0.0.11",
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "coffeelint": "^1.15.7",
+    "chai": "~3.2.0",
+    "coffeelint": "^2.0.7",
     "grunt": "^0.4.5",
     "grunt-cli": "^1.2.0",
     "grunt-coffeelint": "^0.0.16",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-coffee": "latest",
     "grunt-contrib-jshint": "latest",
-    "grunt-mocha-test": "^0.12.7",
-    "mocha": "latest",
-    "grunt-yamllint": "^0.2.0",
+    "grunt-exec": "^3.0.0",
+    "grunt-mocha-test": "~0.13.3",
+    "grunt-yamllint": "^0.3.0",
     "load-grunt-config": "latest",
-    "load-grunt-tasks": "latest",
+    "load-grunt-tasks": "^3.5.2",
+    "madge": "^2.2.0",
+    "mocha": "latest",
     "request": "^2.60.0"
   }
 }

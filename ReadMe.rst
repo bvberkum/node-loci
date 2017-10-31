@@ -1,23 +1,26 @@
 Node Loci
 =========
-:version: 0.0.0-master
+:version: 0.0.1-dev
 :dependency status:
 
-  .. image:: https://gemnasium.com/dotmpe/node-loci.png
-     :target: https://gemnasium.com/dotmpe/node-loci
+  .. image:: https://gemnasium.com/bvberkum/node-loci.png
+     :target: https://gemnasium.com/bvberkum/node-loci
      :alt: Dependencies
 
 :build status:
 
-  .. image:: https://secure.travis-ci.org/dotmpe/node-loci.png
-     :target: https://travis-ci.org/dotmpe/node-loci
+  .. image:: https://secure.travis-ci.org/bvberkum/node-loci.png
+     :target: https://travis-ci.org/bvberkum/node-loci
      :alt: Build
 
 :repository:
 
-  .. image:: https://badge.fury.io/gh/dotmpe%2Fnode-loci.png
-     :target: http://badge.fury.io/gh/dotmpe%2Fnode-loci
+  .. image:: https://badge.fury.io/gh/bvberkum%2Fnode-loci.png
+     :target: http://badge.fury.io/gh/bvberkum%2Fnode-loci
      :alt: GIT
+
+
+An outliner or something.
 
 
 Branch docs
