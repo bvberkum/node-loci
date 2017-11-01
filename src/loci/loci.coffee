@@ -11,7 +11,22 @@ ServiceContainer = require 'service-container'
 
 
 class LociContext extends nodelib.Context
-
+  ref: ->
+  tpld: ( req ) ->
+    page:
+      title: 'Loci'
+    head:
+      init:
+        js: [
+        ]
+        cs: []
+        css: [
+          '/vendor/bootstrap.css'
+          '/vendor/bootstrap-table.css'
+        ]
+        rjs: []
+    pkg: @package
+    menu: {}
   
 module.exports = lib =
   {

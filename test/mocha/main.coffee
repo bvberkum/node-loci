@@ -48,26 +48,21 @@ describe "node-loci", ->
 
       done()
 
-  it "serves a static HTML client", ( done ) ->
-    req = uri: "http://localhost:#{base.config.port}/client.html"
-    request.get req, ( err, res, body ) ->
-
-      expect( res.statusMessage ).to.equal 'OK'
-      expect( res.statusCode ).to.equal 200
-
-      client = fs.readFileSync 'public/client.html'
-      expect( res.body.toString() ).to.equal client.toString()
-
-      done()
-
-  it "redirects to HTML client", ( done ) ->
-    req =
-      url: "http://localhost:#{base.config.port}/"
-      followRedirect: false
-    request req, ( err, res, body ) ->
-
-      expect( res.headers['location'] ).to.equal '/client.html'
-      expect( res.statusMessage ).to.equal 'Found' #Moved Temporarily'
-      expect( res.statusCode ).to.equal 302 #301
-
-      done()
+#  it "serves a HTML client", ( done ) ->
+#    req = uri: "http://localhost:#{base.config.port}/client.html"
+#    request.get req, ( err, res, body ) ->
+#      expect( res.statusMessage ).to.equal 'OK'
+#      expect( res.statusCode ).to.equal 200
+#      done()
+#
+#  it "redirects to HTML client", ( done ) ->
+#    req =
+#      url: "http://localhost:#{base.config.port}/"
+#      followRedirect: false
+#    request req, ( err, res, body ) ->
+#
+#      expect( res.headers['location'] ).to.equal '/client.html'
+#      expect( res.statusMessage ).to.equal 'Found' #Moved Temporarily'
+#      expect( res.statusCode ).to.equal 302 #301
+#
+#      done()

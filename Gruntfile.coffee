@@ -30,12 +30,12 @@ module.exports = ( grunt ) ->
     coffee:
       lib:
         expand: true
-        flatten: true
-        cwd: "#{__dirname}/src/node/"
+        cwd: "#{__dirname}/src/"
         src: [
+           "loci/*.coffee"
            "*.coffee"
         ],
-        dest: "build/js/lib/src/node/"
+        dest: "build/js/loci/src"
         ext: ".js"
 
       dev:
@@ -43,22 +43,20 @@ module.exports = ( grunt ) ->
         cwd: "#{__dirname}/"
         src: [
            "bin/*.coffee"
-           "src/node/*.coffee"
+           "src/**/*.coffee"
            "*.coffee"
-           "test/example/core/*.coffee"
            "test/mocha/*.coffee"
         ],
-        dest: "build/js/lib-dev"
+        dest: "build/js/loci-dev"
         ext: ".js"
 
       test:
         expand: true
         cwd: "#{__dirname}/"
         src: [
-           "test/example/core/*.coffee"
            "test/mocha/*.coffee"
         ],
-        dest: "build/js/lib-test"
+        dest: "build/js/loci-test"
         ext: ".js"
 
     coffeelint:

@@ -1,0 +1,23 @@
+extends ../layout/base
+
+block head
+
+  link(rel='stylesheet', href=config.root+'/client.css')
+  script(src=config.root+"/components/lodash/lodash.js")
+  script(src=config.root+"/client/slideshow.js")
+
+block wrap_epilogue
+  #slideshow_main
+    iframe(src=urlList[0]).slideshow
+
+block footer
+  div Footer
+
+block menu
+
+  ul.urlList
+
+    for url in urlList
+
+      li
+        a(href='#', data-url=url)= url

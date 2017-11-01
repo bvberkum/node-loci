@@ -12,10 +12,14 @@ proc =
 ctxp = {
   proc: {}
   config:
-    engines: {}
+    engines: [
+      'pug'
+    ]
+    views: './src/loci/view'
     verbose: false
     "show-stack-trace": true
     port: 7030
+  cdn: require path.join proc.noderoot, 'cdn.json'
   package: require path.join proc.noderoot, 'package.json'
   packages:
     express: require path.join(

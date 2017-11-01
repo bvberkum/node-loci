@@ -31,8 +31,9 @@
   },
   "main": "bin/loci-cli.coffee",
   "scripts": {
-    "start": "NODE_ENV=development nodemon server.coffee -w coffee -w src -w public -e jade,js,coffee,meta,yaml",
-    "test": "grunt --force lint test"
+    "start": "NODE_ENV=development nodemon ./bin/loci-cli.coffee -w bin -w src -e pug,js,coffee,yaml",
+    "test": "grunt --force lint test",
+    "docs": "sitefile"
   },
   "dependencies": {
     "chalk": "^2.3.0",

@@ -1,0 +1,27 @@
+head
+
+  title= page.title
+  meta(charset="utf-8")
+  meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
+
+  meta(name="keywords", content=pkg.keywords.join(","))
+  meta(name="description", content=pkg.description)
+
+  block meta
+
+  link(href="/favicon.ico", rel="shortcut icon", type="image/x-icon")
+
+  block link
+
+  each href in head.init.js
+    script( type='text/javascript', src=href )
+
+  each href in head.init.cs
+    script( type='text/coffeescript', src=href )
+
+  each href in head.init.css
+    link(rel='stylesheet', href=href)
+
+  each r_main in head.init.rjs
+    script(data-main=r_main, src=head.lib.rjs[r_main])
+

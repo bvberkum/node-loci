@@ -20,6 +20,7 @@ module.exports = ( ctx ) ->
     ctx.static_proto = express.static
 
   app.set 'port', ctx.config.port
+  app.set 'views', ctx.config.views
   app.set 'showStackError', ctx.config['show-stack-trace']
 
   ctx.server = require("http").createServer app

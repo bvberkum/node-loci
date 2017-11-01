@@ -1,0 +1,23 @@
+#!/usr/bin/env sitefile
+sitefile: 0.0.7-dev
+upstream: '*'
+
+routes:
+  '': redir:index
+  index: redir:ReadMe
+  _rst2html: docutils.rst2html:**/*.rst
+  assets: static:assets
+
+options:
+  global:
+    docutils:
+      link_stylesheets: true
+      flags:
+      - "--no-toc-backlinks"
+      meta: []
+      $ref: '#/defs'
+
+defs:
+  stylesheets: [
+    url: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  ]
