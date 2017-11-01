@@ -9,6 +9,14 @@ expect = chai.expect
 pathResolve = ( path ) ->
   require.resolve process.cwd(), path
 
+#  reqInit = ( path, method='GET' ) ->
+#    host: "localhost"
+#    port: server.port || 7000
+#    path: path
+#    method: 'GET'
+#    headers:
+#      Cookie: sessionCookie
+
 
 describe "node-expressio-seed-mpe", ->
 
