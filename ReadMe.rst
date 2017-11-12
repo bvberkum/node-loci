@@ -1,5 +1,5 @@
-Node Loci
-=========
+|logo| Node Loci
+================
 :version: 0.0.1-dev
 :dependency status:
 
@@ -20,8 +20,13 @@ Node Loci
      :alt: GIT
 
 
-An outliner or something.
+.. |logo| image:: assets/logo-clone-e64a19.png
+   :alt:
+   :scale: 35%
 
+A concept for `an outliner or something`__.
+
+.. __: doc/dev.rst
 
 Branch docs
 -----------

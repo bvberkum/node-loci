@@ -14,18 +14,40 @@ module.exports = ( ctx ) ->
 
   app = ctx.app
 
-  ctx.redir '/', '/graph.html'
 
-  app.all '/tree', ( req, res ) ->
-    ctx.io.sockets.emit 'tree'
-    res.json result: "tree sent over IO"
-
-  app.all '/graph.html', ( req, res ) ->
-    res.render 'client/graph.pug', ctx.tpld req
+  # Basic site routers
 
   app.all '/vendor/:pack.:ext', ( req, res ) ->
     ps = req.params ; p = ctx.cdn[ps.ext]["http"]
     res.redirect p.packages[ps.pack]+p.ext
+
+  app.get '/favicon.ico', (req, res) ->
+    res.sendfile 'assets/favicon-clone-e64a19.ico'
+
+
+  # Main pages
+
+  ctx.redir '/', '/tree'
+
+
+  # Hypertext interface
+  app.all '/tree', ( req, res ) ->
+    res.render 'client/tree.pug', ctx.tpld req
+
+  # Graphical interface
+  app.all '/graph', ( req, res ) ->
+    res.render 'client/graph.pug', ctx.tpld req
+
+
+  app.all '/data', ( req, res ) ->
+    res.sendfile "data.yml"
+
+
+  # Testing
+
+  app.all '/msg', ( req, res ) ->
+    ctx.msg.sockets.emit 'msg'
+    res.msg result: "msg sent over IO"
 
   app.all '/client', ( req, res ) ->
     res.render 'client/main.pug'
@@ -46,8 +68,6 @@ module.exports = ( ctx ) ->
         res.write html
       res.end()
 
-  ctx.redir '/client.html', '/socket-test.html'
-
   app.get '/socket-test.html', (req, res) ->
     res.render 'socket-test.pug', ( err, html ) ->
       if err
@@ -57,8 +77,6 @@ module.exports = ( ctx ) ->
         res.write html
       res.end()
 
-  app.get '/favicon.ico', (req, res) ->
-    res.sendfile 'assets/favicon-clone.ico'
 
   proc = ctx.proc[process.pid]
   app.use ctx.static_proto proc.noderoot+'/public'

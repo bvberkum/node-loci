@@ -11,8 +11,12 @@ ServiceContainer = require 'service-container'
 
 
 class LociContext extends nodelib.Context
+
   ref: ->
+
   tpld: ( req ) ->
+    self = @
+
     page:
       title: 'Loci'
     head:
@@ -27,7 +31,15 @@ class LociContext extends nodelib.Context
         rjs: []
     pkg: @package
     menu: {}
-  
+    filters:
+      'loci-tree': ( text, options ) ->
+        console.log 'tree src', options.src
+        #self.load        
+        'tree'
+      'loci-graph': ( text, options ) ->
+        'graph'
+ 
+
 module.exports = lib =
   {
     log: console.log
@@ -61,6 +73,7 @@ module.exports = lib =
         ctx.config.port = process.env.LOCI_PORT
       #if process.pid not in ctxp.proc:
       core = ctxp.proc[process.pid]
+      # Load services.json and services_<env>.json
       container = ServiceContainer.buildContainer core.noderoot, {}
       ctxp.var.lib.loci.container = container
       ctxp.var.lib.loci.core = core
@@ -97,4 +110,3 @@ module.exports = lib =
       app = lib.start ctx, opts
       lib.serve done, ctx
       app
-  }

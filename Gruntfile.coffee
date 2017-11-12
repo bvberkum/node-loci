@@ -102,7 +102,7 @@ module.exports = ( grunt ) ->
       tasks_update:
         cmd: "sh ./tools/tasks.sh"
 
-      nodelib_deps_g:
+      deps_g:
         cmd: "make dep-g"
 
     pkg: grunt.file.readJSON "package.json"

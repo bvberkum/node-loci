@@ -7,6 +7,7 @@ routes:
   index: redir:ReadMe
   _rst2html: docutils.rst2html:**/*.rst
   assets: static:assets
+  favicon.ico: static:assets/favicon-clone-e64a19.ico
 
 options:
   global:
