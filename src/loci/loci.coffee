@@ -2,6 +2,8 @@ _ = require 'lodash'
 process = require 'process'
 nodelib = require 'nodelib-mpe'
 path = require 'path'
+cc = require 'coffee-script'
+fs = require 'fs'
 
 libexpress = require './express'
 libroutes = require './routes'
@@ -12,36 +14,76 @@ ServiceContainer = require 'service-container'
 
 class LociContext extends nodelib.Context
 
-  ref: ->
-
-  tpld: ( req ) ->
-    self = @
-
-    page:
-      title: 'Loci'
-    head:
-      init:
-        js: [
-        ]
+  constructor: ( init, sup ) ->
+    super init, sup
+    @class = LociContext
+    _.defaultsDeep @route,
+      page:
+        title: 'Loci'
+      head:
+        js: []
         cs: []
         css: [
           '/vendor/bootstrap.css'
           '/vendor/bootstrap-table.css'
         ]
         rjs: []
-    pkg: @package
-    menu: {}
-    filters:
-      'loci-tree': ( text, options ) ->
-        console.log 'tree src', options.src
-        #self.load        
-        'tree'
-      'loci-graph': ( text, options ) ->
-        'graph'
+      pkg: @package
+      menu: {}
+      filters:
+        'loci-tree': ( text, options ) ->
+          'tree'
+        'loci-graph': ( text, options ) ->
+          'graph'
+      lib: _.bind @resolve_js, @
+
+  serve_vendor: ( req, res ) ->
+    rp = req.params
+    res.type 'js'
+    cpath = "src/#{rp.vendor}/app/#{rp.path}.coffee"
+    res.write cc._compileFile cpath
+    res.end()
+
+  resolve_js: ( id,
+    formats=['js','css','svg','web-font','true-font'],
+    schemes=['http','local']
+  ) ->
+    if id of @deps.url
+      return @deps.url[id]
+    for ct in formats
+      if ct not of @cdn then continue
+      for s in schemes
+        if s not of @cdn[ct] then continue
+        if id of @cdn[ct][s].packages
+          return @cdn[ct][s] + @cdn[ct][s].ext
+    throw new Error "No JS for #{id}"
+
+  add_shim_inits: ( jsonstr ) ->
+    for lib of @deps.shim
+      if 'init-script' of @deps.shim[lib]
+        fn = @deps.shim[lib]['init-script']
+        if fn.match /.coffee$/
+          func = cc._compileFile fn
+        else
+          func = fs.readFileSync fn
+
+        func = String(func).trim()
+        jsonstr = jsonstr.replace "\"#{lib}\":{",
+            "\"#{lib}\":{\"init\": #{func},"
+
+    jsonstr
+
+
+  # XXX: should do hyperlink resolving
+  ref: ->
+
+  # template data for express request
+  tpld: ( req ) ->
+    @route
  
 
 module.exports = lib =
-  {
+
     log: console.log
 
     # Bootstrap context
@@ -54,6 +96,7 @@ module.exports = lib =
         proc: {}
         config:
           port: 7020
+        route: {}
         package: {}
         packages: {}
         var:
@@ -73,10 +116,13 @@ module.exports = lib =
         ctx.config.port = process.env.LOCI_PORT
       #if process.pid not in ctxp.proc:
       core = ctxp.proc[process.pid]
+
       # Load services.json and services_<env>.json
       container = ServiceContainer.buildContainer core.noderoot, {}
+
       ctxp.var.lib.loci.container = container
       ctxp.var.lib.loci.core = core
+
       ctx = new LociContext ctxp
       ctx.var.lib.loci.context = ctx
       ctx
@@ -110,3 +156,5 @@ module.exports = lib =
       app = lib.start ctx, opts
       lib.serve done, ctx
       app
+
+#

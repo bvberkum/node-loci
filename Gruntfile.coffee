@@ -121,9 +121,8 @@ module.exports = ( grunt ) ->
   # Documentation artefacts, some intial publishing
   grunt.registerTask "build", [
     "coffee:lib"
-    "services_json"
-    "exec:gulp_dist_build"
-    "exec:nodelib_deps_g"
+    "exec:services_json"
+    "exec:deps_g"
   ]
 
   # Looking for better build and module config

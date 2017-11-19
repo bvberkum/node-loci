@@ -1,3 +1,5 @@
+//- Multifunctional block for use as head element
+
 head
 
   title= page.title
@@ -13,15 +15,14 @@ head
 
   block link
 
-  each href in head.init.js
+  each href in head.js
     script( type='text/javascript', src=href )
 
-  each href in head.init.cs
+  each href in head.cs
     script( type='text/coffeescript', src=href )
 
-  each href in head.init.css
+  each href in head.css
     link(rel='stylesheet', href=href)
 
-  each r_main in head.init.rjs
-    script(data-main=r_main, src=head.lib.rjs[r_main])
-
+  each r_main in head.rjs
+    script(data-main=lib(r_main), src='/vendor/require.js')

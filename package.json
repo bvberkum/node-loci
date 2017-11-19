@@ -31,7 +31,7 @@
   },
   "main": "bin/loci-cli.coffee",
   "scripts": {
-    "start": "NODE_ENV=development nodemon ./bin/loci-cli.coffee -w bin -w src -e pug,js,coffee,yaml",
+    "start": "NODE_ENV=development nodemon ./bin/loci-cli.coffee -w bin -w src -w '*.json' -e pug,js,coffee,yaml,json",
     "test": "grunt --force lint test",
     "docs": "sitefile"
   },

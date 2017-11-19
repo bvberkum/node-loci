@@ -87,9 +87,10 @@
         "1-coffees-cript": "//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.12.1/coffee-script.min",
         "coffee-script": "//rawgit.com/yyfearth/coffee-script/extras/extras/coffee-script",
 
-        "bootstrap": "/npm/packages/bootstrap/dist/js/bootstrap.min",
-        "bootstrap-": "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min",
+        "bootstrap-": "/npm/packages/bootstrap/dist/js/bootstrap.min",
+        "bootstrap": "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min",
         "bootstrap-table": "//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min",
+        "tether": "//cdnjs.cloudflare.com/ajax/libs/tether/1.4.1/js/tether.min",
         "event-signal": "//rawgit.com/r-park/event-signal/master/dist/event-signal.min",
         "bluebird": "//cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.0/bluebird.min",
 

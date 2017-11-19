@@ -20,6 +20,7 @@ ctxp = {
     "show-stack-trace": true
     port: 7030
   cdn: require path.join proc.noderoot, 'cdn.json'
+  deps: require path.join proc.noderoot, 'cdn-deps.json'
   package: require path.join proc.noderoot, 'package.json'
   packages:
     express: require path.join(
